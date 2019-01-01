@@ -50,9 +50,6 @@ Here is the powershell script code:
 `$cmd="export DISPLAY=${ip}:0; code -w ."`
 
 `docker run --rm `
-
     `--security-opt seccomp=unconfined `
-    
-    `oviney/ubuntu-vscode `
-    
-    `su - vscode -c $cmd`
+        `oviney/ubuntu-vscode `
+        `su - vscode -c $cmd`
