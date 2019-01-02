@@ -15,6 +15,20 @@ This section outlines the prerequisite software you need installed on your local
 - [X Windows Server](https://sourceforge.net/projects/vcxsrv/) (see details below)
 - (Optional) [Chocolatey Windows package manager](https://chocolatey.org/)
 
+# Quick Tutorial on Docker
+
+## Docker Images
+Docker images are read-only templates that describe a Docker Container. They include specific instructions written in a Dockerfile that defines the application and its dependencies. Think of them as a snapshot of your application at a certain time. You will get images when you docker build.
+
+## Docker Containers
+Docker Containers are instances of Docker images. They include the operating system, application code, runtime, system tools, system libraries, and so on. You are able to connect multiple Docker Containers together, such as a having a Node.js application in one container that is connected to a Redis database container. You will run a Docker Container with docker start.
+
+## Docker Registries
+A Docker Registry is a place for you to store and distribute Docker images. We will be using Docker Images as our base images from DockerHub, a free registry hosted by Docker itself.
+
+## Docker Compose
+Docker Compose is a tool that allows you to build and start multiple Docker Images at once. Instead of running the same multiple commands every time you want to start your application, you can do them all in one command — once you provide a specific configuration.
+
 ## Docker
 Grab it [here](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
 
