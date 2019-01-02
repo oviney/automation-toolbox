@@ -29,6 +29,9 @@ A Docker Registry is a place for you to store and distribute Docker images. We w
 ## Docker Compose
 Docker Compose is a tool that allows you to build and start multiple Docker Images at once. Instead of running the same multiple commands every time you want to start your application, you can do them all in one command — once you provide a specific configuration.
 
+## Docker Commands
+Remembering and finding Docker commands can be pretty frustrating in the beginning, so [here’s](https://medium.com/statuscode/dockercheatsheet-9730ce03630d) a list of them!
+
 ## Docker
 Grab it [here](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
 
