@@ -34,7 +34,8 @@ For additional details [see...](https://chocolatey.org/install)
 # How to use it?  Start the Container and Get VSCode Running
 - Ensure all the required software is installed (all steps outlined above)
 - Git clone this repo
-- Execute the powershell script [run-docker-for-windows.ps1](ubuntu-vscode/run-dockerforwindows.ps1), if things work out the first try, this should cause a VS code window to be opened on your local system
+- Run the build.bat to pull down the image from docker based on the Dockerfile
+- Now, that the docker container is downloaded, you can now execute the `startVSCode.bat`.  If things work out the first try, this should cause a VS code window to be opened on your local system
 - Start working with VS code.  Typically this entails pulling a project from Git or starting a project from skratch.
 
 # Approach
