@@ -1,1 +1,1 @@
-docker build -t ubuntu-vscode .
+docker build -t oviney/ubuntu-vscode .

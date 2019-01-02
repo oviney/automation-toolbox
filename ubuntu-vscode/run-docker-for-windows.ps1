@@ -5,7 +5,7 @@ if (! (ps | ? {$_.path -eq $prog})) {& $prog -multiwindow -ac}
 # get the IP address used by Docker for Windows
 #| where {$_.InterfaceAlias -eq 'vEthernet (DockerNAT)' -and $_.AddressFamily -eq 'IPv4'} `
 $ip = Get-NetIPAddress `
-    | where {$_.InterfaceAlias -eq 'vEthernet (Default Switch) 4' -and $_.AddressFamily -eq 'IPv4'} `
+    | where {$_.InterfaceAlias -eq 'vEthernet (DockerNAT)' -and $_.AddressFamily -eq 'IPv4'} `
     | select -ExpandProperty IPAddress
 
 echo $ip
