@@ -59,6 +59,8 @@ c) Exit the container terminal
 
    `# exit`
    
+Why is the `exit ` necessary?  Because with the docker run command you run bash in the container and you stay in there due to the -i and -t options (interactive with TTY). However, Docker runs on you machine, outside of the container, so after making the necessary changes to the container from the inside, to go back to your system's shell you have to exit (or Ctrl+D) the container's shell.
+   
 d) Take a note of your container id by executing following command :
 
    `$ docker ps -a`
