@@ -32,6 +32,49 @@ Docker Compose is a tool that allows you to build and start multiple Docker Imag
 ## Docker Commands
 Remembering and finding Docker commands can be pretty frustrating in the beginning, so [here’s](https://medium.com/statuscode/dockercheatsheet-9730ce03630d) a list of them!
 
+## Docker Commands I use often
+
+When you use docker run to start a container, it actually creates a new container based on the image you have specified.
+
+Note that you can restart an existing container after it exited and your changes are still there.
+
+`docker images # get the name of the image you want to work with`
+`docker start <image id> # restart it in the background`
+`docker attach <image id> # reattach the terminal & stdin`
+
+This way you avoid using `docker commit` command to save the state of a running container.  That said, here are some examples of using `docker commit`.
+
+## Docker commit Command
+
+a) create container from ubuntu image and run a bash terminal.
+
+   `$ docker run -i -t ubuntu:14.04 /bin/bash`
+   
+b) Inside the terminal install curl
+
+   `# apt-get update`
+   `# apt-get install curl`
+
+c) Exit the container terminal
+
+   `# exit`
+   
+d) Take a note of your container id by executing following command :
+
+   `$ docker ps -a`
+   
+e) save container as new image
+
+   `$ docker commit <container_id> new_image_name:tag_name(optional)`
+   
+f) verify that you can see your new image with curl installed.
+
+   `$ docker images `          
+
+   `$ docker run -it new_image_name:tag_name bash
+      # which curl
+        /usr/bin/curl`
+
 ## Docker
 Grab it [here](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
 
