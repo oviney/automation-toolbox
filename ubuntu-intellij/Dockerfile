@@ -28,7 +28,7 @@ RUN echo 'Creating user: developer' && \
     sudo chown root:root /usr/bin/sudo && \
     chmod 4755 /usr/bin/sudo
 
-RUN echo 'Installing Solar Link plugin' && \
+RUN echo 'Installing Solar Link plugin.' && \
     wget https://plugins.jetbrains.com/plugin/download?rel=true&updateId=53739 -O solarlink.zip -q && \
     unzip -q solarlink.zip && \
     rm solarlink.zip
