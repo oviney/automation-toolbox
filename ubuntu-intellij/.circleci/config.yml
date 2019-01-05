@@ -5,7 +5,7 @@ jobs:
       image: circleci/classic:latest
     steps:
         - run:
-            name:  Running tests \
-            command: |
+            name:  Running tests 
+            command: 
                     docker build -t oviney/ubuntu-intellij .
 
