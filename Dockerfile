@@ -8,7 +8,7 @@ ENV DEBCONF_NONINTERACTIVE_SEEN true
 RUN apt-get update -qq && \
     echo 'Installing OS dependencies' && \
     apt-get update && \
-    apt-get install software-properties-common
+    apt-get install software-properties-common && \
     add-apt-repository ppa:mmk2410/intellij-idea && \
     apt-get install -qq -y --fix-missing intellij-idea-community gradle maven sudo software-properties-common git libxext-dev libxrender-dev libxslt1.1 \
         libxtst-dev libgtk2.0-0 libcanberra-gtk-module unzip wget iputils-ping net-tools && \
