@@ -1,16 +1,10 @@
-machine:
-  services:
-    - docker
-
-dependencies:
-  cache_directories:
-    - "~/docker"
-  override:
-    - docker info
-    - if [[ -e ~/docker/ubuntu.tar ]]; then docker load --input ~/docker/ubuntu.tar; fi
-    - docker pull ubuntu:latest
-    - mkdir -p ~/docker; docker save ubuntu:latest > ~/docker/ubuntu.tar
-
-test:
-  override:
-    - docker build -t oviney/ubuntu-intellij .
+version: 2
+jobs:
+  build:
+    docker:
+      - image: ubuntu/latest 
+        environment:
+           TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+    working_directory: ~/your-dir
+    environment:
+      TZ: "/usr/share/zoneinfo/America/Los_Angeles"
