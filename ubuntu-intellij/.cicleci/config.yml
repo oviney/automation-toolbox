@@ -1,10 +1,11 @@
 version: 2
 jobs:
   build:
-    docker:
-      - image: ubuntu/latest 
-        environment:
-           TZ: "/usr/share/zoneinfo/America/Los_Angeles"
-    working_directory: ~/your-dir
-    environment:
-      TZ: "/usr/share/zoneinfo/America/Los_Angeles"
+    machine:
+      image: circleci/classic:latest
+    steps:
+        - run:
+            name:  Running tests \
+            command: |
+                    docker build -t oviney/ubuntu-intellij .
+
