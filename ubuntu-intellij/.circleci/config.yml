@@ -3,14 +3,3 @@ jobs:
   build:
     machine:
       image: circleci/classic:latest
-    steps:
-        - checkout
-        - run:
-            name:  Running tests 
-            command: 
-                    docker build -t oviney/ubuntu-intellij .
-workflows:
-  version: 2
-  workflow:
-    jobs:
-    - build
