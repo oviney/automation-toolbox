@@ -12,4 +12,7 @@ jobs:
       - run:
               name:  Do something else
               command:  echo "Do something else"
+      - run:
+              name:  Build docker image
+              command:  docker build -t oviney/test-automation-toolbox .
 
