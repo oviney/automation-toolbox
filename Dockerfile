@@ -28,7 +28,7 @@ RUN echo 'Creating user: developer' && \
     sudo chown root:root /usr/bin/sudo && \
     chmod 4755 /usr/bin/sudo
 
-RUN mkdir -p /home/developer/.IdeaIC2018.3/config/plugins
+RUN mkdir -p /home/developer/.IdeaIC2018.3.2/config/plugins
 
 RUN chown developer:developer -R /home/developer/.IdeaIC2018.3.2
 
