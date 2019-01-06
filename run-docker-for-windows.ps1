@@ -12,4 +12,5 @@ echo $ip
 
 # start Visual Studo Code as the vscode user
 $cmd="export DISPLAY=${ip}:0; intellij-idea-community"
-docker run --rm --security-opt seccomp=unconfined oviney/test-automation-toolbox su - developer -c $cmd
+#docker run --rm -it --security-opt seccomp=unconfined oviney/test-automation-toolbox su - developer -c $cmd
+docker run --rm -it --security-opt seccomp=unconfined oviney/test-automation-toolbox:latest su - developer -c $cmd
