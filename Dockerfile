@@ -40,7 +40,7 @@ RUN echo 'Installing Solar Link plugin.' && \
     rm solarlink.zip
 
 RUN echo 'Installing Cucumber for Java plugin' && \
-    wget "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=53739" -O cucumberforjava.zip -q && \
+    wget "http://plugins.jetbrains.com/plugin/download?rel=true&updateId=52287" -O cucumberforjava.zip -q && \
     unzip -q cucumberforjava.zip && \
     rm cucumberforjava.zip
 
