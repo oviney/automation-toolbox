@@ -99,20 +99,24 @@ f) verify that you can see your new image with curl installed.
         /usr/bin/curl`
 
 # How to use it?  Start the Container and Get Your Prefered IDE Running
-- Ensure all the required software is installed (all steps outlined above)
-- Git clone this repo
-- Run the `build.bat` to pull down the image from docker based on the Dockerfile
-- Now, that the docker container is downloaded, you can now execute the `startVSCode.bat` or `startIntellij`.  If things work out the first try, this should cause your preferred IDE window to be opened on your local system
-- Assuming that went as expected, start coding or `git clone` and run!
+## Basic steps to use
+
+### <Optional> Git clone test automation framework template 
+- <optional step> Git clone the auto framework template - `git clone https://<first.last>@innersource.accenture.com/scm/atac/cukes_template.git`
+
+### Git clone test-automation-toolbox 
+- Git clone the source `test-automation-toolbox` repo  - `get clone https://github.com/oviney/test-automation-toolbox.git`
+
+### Build Docker image
+- Navigate into the `test-automation-toolbox` directory and build the image using `/build.sh` or `build.bat`
+- Run the image using `startIntellij.bat` or `startIntellij.sh`
+- <optional step> add the local folder with git cloned auto framework template by adjusting the powershell script.  Example:  `docker run -it --security-opt seccomp=unconfined oviney/test-automation-toolbox:latest sudo su - developer -c "export DISPLAY=<local-docker-ip>:0; <intellij-idea-community|code -w .>"`  Note:  environment variable DISPLAY is set to your local Docker ethernet device.
+
+- You should see an Intellij window open on your system
+- Open auto framework template on mounted drive in Docker container 
 
 # Approach
 All of the this is automatable, but let's walk through how it works. We are going to start the prefered IDE within the Docker container. 
-
-## For VSCode
-VSCode will not start up as root, so I created a vscode user on the image. We will switch to that user `su - vscode` and start VSCode in the current directory of /home/vscode `code -w .`. We will run the latest build of image oviney/test-atuomation-toolbox that I built. 
-
-## For Intellij
-Intellij will not start up as root, so I created a developer user on the image. We will switch to that user `su - developer` and start Intellij in the current directory of /home/developer `intellij-community-idea`. We will run the latest build of image oviney/test-atuomation-toolbox that I built. 
 
 We will send the IDE window to the X Window Server over a TCP/IP connection on default display 0 (tcp port 6000). To do that, we set the DISPLAY environment variable in the container to to the IP address provided by the Docker host. Run ipconfig and look for "vEthernet (DockerNAT)".  Note:  This might be different on your environment, by default mine was : "vEthernet (Default Switch) 4".
 
