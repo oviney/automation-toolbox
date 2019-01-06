@@ -35,12 +35,12 @@ RUN chown developer:developer -R /home/developer/.IdeaIC2018.3.2
 RUN cd /home/developer/.IdeaIC2018.3.2/config/plugins
 
 RUN echo 'Installing Solar Link plugin.' && \
-    wget https://plugins.jetbrains.com/plugin/download?rel=true&updateId=53739 -O solarlink.zip -q && \
+    wget "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=53739" -O solarlink.zip -q && \
     unzip -q solarlink.zip && \
     rm solarlink.zip
 
 RUN echo 'Installing Cucumber for Java plugin' && \
-    wget https://plugins.jetbrains.com/plugin/download?rel=true&updateId=53739 -O cucumberforjava.zip -q && \
+    wget "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=53739" -O cucumberforjava.zip -q && \
     unzip -q cucumberforjava.zip && \
     rm cucumberforjava.zip
 
