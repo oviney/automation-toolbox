@@ -1,4 +1,4 @@
-# ubuntu-vscode
+# test-automation-toolbox
 How long does it take to set up your test automation development environment? How long does it take a new automatin engineer on your team to set up their dev environment? Say you want to try out a new programming language, how much time do you spend figuring out what tools to use before you actually try out the language? 
 
 ## Requirements for ubuntu-vscode
