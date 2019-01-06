@@ -96,12 +96,12 @@ That installed the most recent 64-bit version vcxsrv v1.20.1.4  released in Jan 
 
 For additional details [see...](https://chocolatey.org/install)
 
-# How to use it?  Start the Container and Get VSCode Running
+# How to use it?  Start the Container and Get Your Prefered IDE Running
 - Ensure all the required software is installed (all steps outlined above)
 - Git clone this repo
 - Run the `build.bat` to pull down the image from docker based on the Dockerfile
-- Now, that the docker container is downloaded, you can now execute the `startVSCode.bat`.  If things work out the first try, this should cause a VS code window to be opened on your local system
-- Start working with VS code.  Typically this entails pulling a project from Git or starting a project from skratch.
+- Now, that the docker container is downloaded, you can now execute the `startVSCode.bat` or `startIntellij`.  If things work out the first try, this should cause your preferred IDE window to be opened on your local system
+- Assuming that went as expected, start coding or `git clone` and run!
 
 # Approach
 All of the this is automatable, but let's walk through how it works. We are going to start the prefered IDE within the Docker container. 
