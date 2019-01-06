@@ -8,7 +8,7 @@ How long does it take to set up your test automation development environment? Ho
 - Type a single command and be able to edit and debug it
 - The IDE tailored to the language and domain of the project
 
-In this README, we will illustrate how to simplify the development experience using recent releases from Ubuntu, Visual Studio Code and Docker with the age-old X Window forwarding.
+In this README, we will illustrate how to simplify the development experience using recent releases from Ubuntu, Visual Studio Code, Intellij and Docker with the age-old X Window forwarding.  Yout get to pick what editor you want to work with.  Keep in mind, VSCode doesn't have the plugins installed by default.  That work in the Dockerfile is still to be completed.
 
 # Preprequisite Software
 This section outlines the prerequisite software you need installed on your local system to get this all running.
@@ -47,6 +47,7 @@ Note that you can restart an existing container after it exited and your changes
 This way you avoid using `docker commit` command to save the state of a running container.  That said, here are some examples of using `docker commit`.
 
 ## Docker commit Command
+This section provides some simple examples of how you can save the state of a container.
 
 a) create container from ubuntu image and run a bash terminal.
 
@@ -103,9 +104,17 @@ For additional details [see...](https://chocolatey.org/install)
 - Start working with VS code.  Typically this entails pulling a project from Git or starting a project from skratch.
 
 # Approach
-All of the this is automatable, but let's walk through how it works. We are going to start Visual Studio Code within the Docker container. VSCode will not start up as root, so I created a vscode user on the image. We will switch to that user `su - vscode` and start VSCode in the current directory of /home/vscode `code -w .`. We will run the latest build of image oviney/ubuntu-vscode that I built. We will send the VSCode window to the X Window Server over a TCP/IP connection on default display 0 (tcp port 6000). To do that, we set the DISPLAY environment variable in the container to to the IP address provided by the Docker host. Run ipconfig and look for "vEthernet (DockerNAT)".  Note:  This might be different on your environment, by default mine was : "vEthernet (Default Switch) 4".
+All of the this is automatable, but let's walk through how it works. We are going to start the prefered IDE within the Docker container. 
 
-Using that IP address, we can set the env var and start VSCode. `docker run` will pull (download) the image if it doesn't exist locally. When these commands complete, VSCode will pop open, assuming you have X Server running already.
+## For VSCode
+VSCode will not start up as root, so I created a vscode user on the image. We will switch to that user `su - vscode` and start VSCode in the current directory of /home/vscode `code -w .`. We will run the latest build of image oviney/test-atuomation-toolbox that I built. 
+
+## For Intellij
+Intellij will not start up as root, so I created a developer user on the image. We will switch to that user `su - developer` and start Intellij in the current directory of /home/developer `intellij-community-idea`. We will run the latest build of image oviney/test-atuomation-toolbox that I built. 
+
+We will send the IDE window to the X Window Server over a TCP/IP connection on default display 0 (tcp port 6000). To do that, we set the DISPLAY environment variable in the container to to the IP address provided by the Docker host. Run ipconfig and look for "vEthernet (DockerNAT)".  Note:  This might be different on your environment, by default mine was : "vEthernet (Default Switch) 4".
+
+Using that IP address, we can set the env var and start the IDE. `docker run` will pull (download) the image if it doesn't exist locally. When these commands complete, the IDE will pop open, assuming you have X Server running already.
 
 To illustrate how we can automate these repeatable steps, below you will find the powershell script source code.
 
@@ -119,7 +128,7 @@ To illustrate how we can automate these repeatable steps, below you will find th
 
 `$ip = Get-NetIPAddress `
 
-    `| where {$_.InterfaceAlias -eq 'vEthernet (DockerNAT)' -and $_.AddressFamily -eq 'IPv4'} `
+    `| where {$_.InterfaceAlias -eq 'vEthernet (DockerNAT)' -and $_.AddressFamily -eq 'IPv4'} ` # Note:  For me, I need to use '-eq vEthernet (Default Switch) 4' to match my environment.  This devince was also not blocking X11 forwarding.
     
     `| select -ExpandProperty IPAddress`
 
@@ -129,5 +138,14 @@ To illustrate how we can automate these repeatable steps, below you will find th
 
 `docker run --rm `
     `--security-opt seccomp=unconfined `
-        `oviney/ubuntu-vscode `
+        `oviney/test-automation-toolbox `
         `su - vscode -c $cmd`
+        
+## Start Intellij as the developer user
+
+`$cmd="export DISPLAY=${ip}:0; intellij-community-idea"`
+
+`docker run --rm `
+    `--security-opt seccomp=unconfined `
+        `oviney/test-automation-toolbox `
+        `su - developer -c $cmd`
