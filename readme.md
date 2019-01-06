@@ -17,6 +17,22 @@ This section outlines the prerequisite software you need installed on your local
 - [X Windows Server](https://sourceforge.net/projects/vcxsrv/) (see details below)
 - (Optional) [Chocolatey Windows package manager](https://chocolatey.org/)
 
+## Docker
+Grab it [here](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
+
+## Git
+Grab it [here](https://git-scm.com/download/win)
+
+## X Windows Server on Windows
+[VcXsrv](https://sourceforge.net/projects/vcxsrv/) looks like a good choice for an X Server on Windows. It is free, maintained, has good ratings, automatable, and easy to install via Chocolatey: `choco install -y vcxsrv`. 
+
+That installed the most recent 64-bit version vcxsrv v1.20.1.4  released in Jan 2019 on my machine.
+
+## Chocolatey Windows Package Manager Installation
+`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
+
+For additional details [see...](https://chocolatey.org/install)
+
 # Quick Tutorial on Docker
 
 ## Docker Images
@@ -41,7 +57,9 @@ When you use docker run to start a container, it actually creates a new containe
 Note that you can restart an existing container after it exited and your changes are still there.
 
 `docker images # get the name of the image you want to work with`
+
 `docker start <image id> # restart it in the background`
+
 `docker attach <image id> # reattach the terminal & stdin`
 
 This way you avoid using `docker commit` command to save the state of a running container.  That said, here are some examples of using `docker commit`.
@@ -79,22 +97,6 @@ f) verify that you can see your new image with curl installed.
    `$ docker run -it new_image_name:tag_name bash
       # which curl
         /usr/bin/curl`
-
-## Docker
-Grab it [here](https://hub.docker.com/editions/community/docker-ce-desktop-windows)
-
-## Git
-Grab it [here](https://git-scm.com/download/win)
-
-## X Windows Server on Windows
-[VcXsrv](https://sourceforge.net/projects/vcxsrv/) looks like a good choice for an X Server on Windows. It is free, maintained, has good ratings, automatable, and easy to install via Chocolatey: `choco install -y vcxsrv`. 
-
-That installed the most recent 64-bit version vcxsrv v1.20.1.4  released in Jan 2019 on my machine.
-
-## Chocolatey Windows Package Manager Installation
-`@"%SystemRoot%\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -InputFormat None -ExecutionPolicy Bypass -Command "iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))" && SET "PATH=%PATH%;%ALLUSERSPROFILE%\chocolatey\bin"`
-
-For additional details [see...](https://chocolatey.org/install)
 
 # How to use it?  Start the Container and Get Your Prefered IDE Running
 - Ensure all the required software is installed (all steps outlined above)
