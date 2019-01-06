@@ -28,11 +28,14 @@ RUN echo 'Creating user: developer' && \
     sudo chown root:root /usr/bin/sudo && \
     chmod 4755 /usr/bin/sudo
 
-#RUN mkdir -p /home/developer/.IdeaIC2018.3.2/config/plugins
+RUN echo 'Check for Intellij config dir' && \
+    ls -la /home/developer 
 
-#RUN chown developer:developer -R /home/developer/.IdeaIC2018.3.2
+RUN mkdir -p /home/developer/.IdeaIC2018.3/config/plugins
 
-#RUN cd /home/developer/.IdeaIC2018.3.2/config/plugins
+RUN chown developer:developer -R /home/developer/.IdeaIC2018.3
+
+RUN cd /home/developer/.IdeaIC2018.3/config/plugins
 
 RUN echo 'Installing Solar Link plugin.' && \
     wget "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=53739" -O /home/developer/.IdeaIC2018.3/config/plugins/solarlink.zip -q && \
@@ -45,6 +48,12 @@ RUN echo 'Installing Cucumber for Java plugin' && \
     cd /home/developer/.IdeaIC2018.3/config/plugins/ && \
     unzip -q cucumberforjava.zip && \
     rm cucumberforjava.zip
+
+RUN echo 'Instaling Gherkin plugin' && \
+    wget "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=52286" -O  /home/developer/.IdeaIC2018.3/config/plugins/gherkin.zip -q && \
+    cd /home/developer/.IdeaIC2018.3/config/plugins/ && \
+    unzip -q gherkin.zip && \
+    rm gherkin.zip
 
 RUN sudo chown developer:developer -R /home/developer
 
