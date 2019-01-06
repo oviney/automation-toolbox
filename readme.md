@@ -101,7 +101,7 @@ f) verify that you can see your new image with curl installed.
 # How to use it?  Start the Container and Get Your Prefered IDE Running
 ## Basic steps to use
 
-### <Optional> Git clone test automation framework template 
+### Optional:  Git clone test automation framework template 
 - <optional step> Git clone the auto framework template - `git clone https://<first.last>@innersource.accenture.com/scm/atac/cukes_template.git`
 
 ### Git clone test-automation-toolbox 
