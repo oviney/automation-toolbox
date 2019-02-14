@@ -105,7 +105,7 @@ f) verify that you can see your new image with curl installed.
 - <optional step> Git clone the auto framework template - `git clone https://<first.last>@innersource.accenture.com/scm/atac/cukes_template.git`
 
 ### Git clone test-automation-toolbox 
-- Git clone the source `test-automation-toolbox` repo  - `get clone https://github.com/oviney/test-automation-toolbox.git`
+- Git clone the source `test-automation-toolbox` repo  - `git clone https://github.com/oviney/test-automation-toolbox.git`
 
 ### Build Docker image
 - Navigate into the `test-automation-toolbox` directory and build the image using `/build.sh` or `build.bat`
