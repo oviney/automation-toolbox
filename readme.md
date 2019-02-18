@@ -46,21 +46,19 @@ That installed the most recent 64-bit version vcxsrv v1.20.1.4  released in Jan 
 ### Next steps using the Docker container daily
 One thing I noticed was I wanted to automate the manual steps to encourage me to use it.  So, here are a few of my favourite hacks.
 
-> Start Docker container, fire up Intellij, using local git repo (on laptop), using local drive for IDE preferences
+> Start Docker container, fire up Intellij, using local git repo (on laptop), using Docker image to store the IDE preferences and plugins.  When you choose to store IDE preferences and plugins in the Docker container, you run `docker run ...` the container only once, then after that you start `docker start ...` the container.  Details on the difference below.  If you don't do it this way, you'll lose your data.
 
 ```PowerShell # start VcXsrv if it is not started yet
 $prog="$env:ProgramFiles\VcXsrv\vcxsrv.exe"
 if (! (ps | ? {$_.path -eq $prog})) {& $prog -multiwindow -ac}
 
 # get the IP address used by Docker for Windows
-#| where {$_.InterfaceAlias -eq 'vEthernet (DockerNAT)' -and $_.AddressFamily -eq 'IPv4'} `
 $ip = Get-NetIPAddress `
     | where {$_.InterfaceAlias -eq 'vEthernet (DockerNAT)' -and $_.AddressFamily -eq 'IPv4'} `
     | select -ExpandProperty IPAddress
-
 echo $ip
 
-# start Visual Studo Code as the vscode user
+# start 
 $cmd="intellij-idea-community"
 set-variable -name DISPLAY -value ${ip}:0.0
 echo $DISPLAY
