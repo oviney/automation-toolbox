@@ -10,13 +10,22 @@ RUN apt-get update -qq && \
     apt-get update && \
     apt-get install -qq -y --fix-missing software-properties-common && \
     add-apt-repository ppa:mmk2410/intellij-idea && \
-    apt-get install -qq -y --fix-missing intellij-idea-community gradle maven sudo software-properties-common git libxext-dev libxrender-dev libxslt1.1 libxtst-dev libgtk2.0-0 libcanberra-gtk-module unzip wget iputils-ping net-tools && \
+    apt-get install -qq -y --fix-missing intellij-idea-community gradle maven sudo software-properties-common git libxext-dev libxrender-dev libxslt1.1 libxtst-dev libgtk2.0-0 libcanberra-gtk-module unzip wget iputils-ping net-tools curl gpg apt-utils && \
+    apt-get upgrade -y --force-yes -qq && \
     echo 'Cleaning up' && \
     apt-get clean -qq -y && \
     apt-get autoclean -qq -y && \
     apt-get autoremove -qq -y &&  \
     rm -rf /var/lib/apt/lists/* && \
     rm -rf /tmp/*
+
+#RUN echo 'Installing VS Code latest version' && \
+#    curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg && \
+#    install -o root -g root -m 644 microsoft.gpg /etc/apt/trusted.gpg.d/ && \
+#    sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list' && \
+#    apt-get install -y apt-transport-https && \
+#    apt-get update && \
+#    apt-get install -f -qq -y code libasound2 libxtst6 libnss3
 
 RUN echo 'Creating user: developer' && \
     mkdir -p /home/developer && \
@@ -29,13 +38,10 @@ RUN echo 'Creating user: developer' && \
     chmod 4755 /usr/bin/sudo
 
 RUN echo 'Check for Intellij config dir' && \
-    ls -la /home/developer 
-
-RUN mkdir -p /home/developer/.IdeaIC2018.3/config/plugins
-
-RUN chown developer:developer -R /home/developer/.IdeaIC2018.3
-
-RUN cd /home/developer/.IdeaIC2018.3/config/plugins
+    ls -la /home/developer && \
+    mkdir -p /home/developer/.IdeaIC2018.3/config/plugins && \
+    chown developer:developer -R /home/developer/.IdeaIC2018.3 && \
+    cd /home/developer/.IdeaIC2018.3/config/plugins
 
 RUN echo 'Installing Solar Link plugin.' && \
     wget "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=53739" -O /home/developer/.IdeaIC2018.3/config/plugins/solarlink.zip -q && \
@@ -60,4 +66,5 @@ RUN sudo chown developer:developer -R /home/developer
 USER developer
 ENV HOME /home/developer
 WORKDIR /home/developer
+# CMD export DISPLAY=${IP_ADDR}:0; intellij-idea-community; 
 CMD intellij-idea-community
