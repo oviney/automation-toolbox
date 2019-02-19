@@ -107,3 +107,27 @@ WARN: Cucumber for Java not loaded: since build 191.5532 > IC-183.5429.30
 > Note:  Because we did not remove the image after exiting our IDE (*stop or exit container*).  The start command will work and will fire up Intellij IDE again.
 
 You should see Intellij IDE window pop up. 
+
+- Save the state of a container, persist the storage.  This is useful, but depends on your use case.
+
+Get your container id.
+
+```Batch
+C:\Users\ouray>docker container ls --all
+CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS                      PORTS               NAMES
+0b69738121d8        oviney/toolbox-intellij-saved           "/bin/sh -c intellij…"   6 minutes ago       Exited (0) 4 minutes ago                        flamboyant_yalow
+5fbf887c285f        oviney/toolbox-intellij-saved           "/bin/sh -c intellij…"   16 minutes ago      Exited (0) 7 minutes ago                        musing_nash
+a1b086104d20        oviney/test-automation-toolbox:latest   "/bin/sh -c intellij…"   28 minutes ago      Exited (0) 17 minutes ago                       toolbox-intellij
+```
+
+Then commit the changes
+
+```Batch
+C:\Users\ouray>docker commit 0b69738121d8 oviney/toolbox-intellij-image:version1
+```
+
+Run the newly saved container
+
+```Batch
+C:\Users\ouray>docker start -ai oviney/toolbox-intellij-saved
+```
