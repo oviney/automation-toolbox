@@ -95,5 +95,15 @@ To restart an existing container, we'll use the start command with the `-a` flag
 > Note:  I removed the following argument from the `docker run...` command; ```--rm		Automatically remove the container when it exits```
 
  ```Batch
- 
+ C:\Users\ouray>docker ps -a
+CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS              PORTS               NAMES
+a1b086104d20        oviney/test-automation-toolbox:latest   "/bin/sh -c intellij…"   34 seconds ago      Up 32 seconds                           toolbox-intellij
+
+C:\Users\ouray>docker start -ai a1b086104d20
+WARN: Gherkin not loaded: since build 191.5532 > IC-183.5429.30
+WARN: Cucumber for Java not loaded: since build 191.5532 > IC-183.5429.30
  ```
+
+> Note:  Because we did not remove the image after exiting our IDE (*stop or exit container*).  The start command will work and will fire up Intellij IDE again.
+
+You should see Intellij IDE window pop up. 
