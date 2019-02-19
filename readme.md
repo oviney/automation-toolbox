@@ -65,4 +65,7 @@ docker run --rm `
     -e DISPLAY=$DISPLAY `
     --security-opt seccomp=unconfined `
     --name toolbox-intellij `
-    oviney/test-automation-toolbox:latest```
+    oviney/test-automation-toolbox:latest 
+```
+    
+ * - Start Docker container (*data from previous sessions persisted*), fire up Intellij, using local git repo (on laptop), using Docker image to store the IDE preferences and plugins. 
