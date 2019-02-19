@@ -68,4 +68,32 @@ docker run --rm `
     oviney/test-automation-toolbox:latest 
 ```
     
- * - Start Docker container (*data from previous sessions persisted*), fire up Intellij, using local git repo (on laptop), using Docker image to store the IDE preferences and plugins. 
+ - Start Docker container (*data from previous sessions persisted*), fire up Intellij, using local git repo (on laptop), using Docker image to store the IDE preferences and plugins.
+ 
+ ```Batch
+ C:\Users\ouray>docker ps -a
+CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS              PORTS               NAMES
+
+C:\Users\ouray>docker images
+REPOSITORY                       TAG                 IMAGE ID            CREATED             SIZE
+oviney/test-automation-toolbox   latest              fcffde991fb6        5 minutes ago       1.97GB
+oviney/ubuntu-vscode             latest              df830a104655        20 minutes ago      517MB
+<none>                           <none>              3ac3b3403a11        About an hour ago   1.97GB
+<none>                           <none>              96c337546fe4        2 hours ago         517MB
+<none>                           <none>              9cc8e8ecef83        2 hours ago         517MB
+ubuntu                           latest              47b19964fb50        12 days ago         88.1MB
+
+C:\Users\ouray>docker ps -a
+CONTAINER ID        IMAGE                                   COMMAND                  CREATED             STATUS              PORTS               NAMES
+0f4787510f67        oviney/test-automation-toolbox:latest   "/bin/sh -c intellij…"   23 minutes ago      Up 23 minutes                           toolbox-intellij
+ ```
+ 
+ Grab the container id for the desired container.  For me, this is `0f4787510f67`.  Let's use that to start *restart* the Docker container.
+ 
+To restart an existing container, we'll use the start command with the `-a` flag to attach to it and the `-i` flag to make it interactive, followed by either the container ID or name. Be sure to substitute the ID of your container in the command below:
+
+> Note:  I removed the following argument from the `docker run...` command; ```--rm		Automatically remove the container when it exits```
+
+ ```Batch
+ 
+ ```
