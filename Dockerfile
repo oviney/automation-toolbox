@@ -50,13 +50,13 @@ RUN echo 'Installing Solar Link plugin.' && \
     rm solarlink.zip
 
 RUN echo 'Installing Cucumber for Java plugin' && \
-    wget "http://plugins.jetbrains.com/plugin/download?rel=true&updateId=52287" -O /home/developer/.IdeaIC2018.3/config/plugins/cucumberforjava.zip -q && \
+    wget "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=58338" -O /home/developer/.IdeaIC2018.3/config/plugins/cucumberforjava.zip -q && \
     cd /home/developer/.IdeaIC2018.3/config/plugins/ && \
     unzip -q cucumberforjava.zip && \
     rm cucumberforjava.zip
 
 RUN echo 'Instaling Gherkin plugin' && \
-    wget "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=52286" -O  /home/developer/.IdeaIC2018.3/config/plugins/gherkin.zip -q && \
+    wget "https://plugins.jetbrains.com/plugin/download?rel=true&updateId=58337" -O  /home/developer/.IdeaIC2018.3/config/plugins/gherkin.zip -q && \
     cd /home/developer/.IdeaIC2018.3/config/plugins/ && \
     unzip -q gherkin.zip && \
     rm gherkin.zip
