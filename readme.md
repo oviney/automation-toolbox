@@ -36,17 +36,16 @@ That installed the most recent 64-bit version vcxsrv v1.20.1.4  released in Jan 
 
 ### Build Docker image
 - Navigate into `test-automation-toolbox` directory and build the Docker image using `/build.sh` or `build.bat`
-- Run the Docker image  `startIntellij.bat` or `startIntellij.sh`
-- <optional step> add the local folder with git cloned auto framework template by adjusting the powershell script.  
-   
-> Example:  `docker run -it --security-opt seccomp=unconfined oviney/test-automation-toolbox:latest sudo su - developer -c "export DISPLAY=<local-docker-ip>:0; <intellij-idea-community|code -w .>"`  Note:  environment variable DISPLAY is set to your local Docker ethernet device.
 
+### Run Docker image
+- Run the Docker image  `startIntellij.bat` or `startIntellij.sh` or run the powershell script.  I typically open the powershell script and run it in the PowerShell IDE (default with Windows 10 Pro).  
 - You should see an Intellij window open on your system
 
 ### Next steps using the Docker container daily
 One thing I noticed was I wanted to automate the manual steps to encourage me to use it.  So, here are a few of my favourite hacks.
 
-> Start Docker container, fire up Intellij, using local git repo (on laptop), using Docker image to store the IDE preferences and plugins.  When you choose to store IDE preferences and plugins in the Docker container, you run `docker run ...` the container only once, then after that you start `docker start ...` the container.  Details on the difference below.  If you don't do it this way, you'll lose your data.
+- Run Docker container, fire up Intellij, using local git repo (on laptop), using Docker image to store the IDE preferences and plugins.  
+> Note:  When you choose to store IDE preferences and plugins in the Docker container, you run `docker run ...` the container only once, then after that you start `docker start ...` the container.  Details on the difference below.  If you don't do it this way, you'll lose your data.
 
 ```PowerShell # start VcXsrv if it is not started yet
 $prog="$env:ProgramFiles\VcXsrv\vcxsrv.exe"
